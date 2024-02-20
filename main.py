@@ -1,50 +1,63 @@
-import requests
-import logging
-from camera_handler import CameraHandler
-from image_analyzer import ImageAnalyzer
-from datetime import datetime, time
+from telebot import TeleBot
+import google.generativeai as genai
+import PIL.Image
+from io import BytesIO
 
-# Configure logging
-logging.basicConfig(filename='monitoring.log', level=logging.INFO)
+bot = TeleBot("6384034441:AAH9mTBkUTIRdExjeS2dFs3WY4yr5RC7yVo")
+genai.configure(api_key="AIzaSyCsbDluFtfIiCzxnUljPpH4R2Nse5l9c-c")
+model = genai.GenerativeModel('gemini-pro-vision')
 
-# Replace with your configuration values
-gemini_api_url = "https://your_gemini_api_endpoint"
-gemini_api_token = "your_gemini_api_token"
-capture_interval = 60  # Seconds
+@bot.message_handler(commands=['start'])
+def handle_first_message(message):
+    bot.send_message(message.chat.id, "Welcome to the image description bot! Please send me a photo to analyze.")
 
-# Initialize camera and analyzer
-camera_handler = CameraHandler()
-image_analyzer = ImageAnalyzer()
+@bot.message_handler(content_types=['photo'])
+def handle_image_message(message):
+    # Send a loading message
+    loading_message = bot.send_message(message.chat.id, "Processing the image, please wait...")
 
-def main():
-    while True:
-        try:
-            # Capture and analyze image
-            image_data, analysis_results = camera_handler.capture_and_analyze()
+    global img
 
-            # Check for damage and send data if needed
-            if analysis_results.damage_detected and analysis_results.severity > 0.5:
-                data = {
-                    "image_data": image_data,
-                    "analysis_results": analysis_results.to_dict()
-                }
-                send_data_to_gemini(data)
-            else:
-                logging.info("No significant damage detected.")
+    try:
+        image_file = bot.get_file(message.photo[-1].file_id)
+        image_data = bot.download_file(image_file.file_path)
+        img = PIL.Image.open(BytesIO(image_data))
 
-        except Exception as e:
-            logging.error(f"Error occurred: {e}")
+        # Create Gemini Pro Vision request object
+        response = model.generate_content(["Describe the photo.", img], stream=True)
+        response.resolve()
+        image_description = response.text
 
-        # Wait before next capture
-        time.sleep(capture_interval)
+        # Check for the presence of specific elements in the description
+        presence_info = check_presence(image_description)
 
-def send_data_to_gemini(data):
-    headers = {"Authorization": f"Bearer {gemini_api_token}"}
-    response = requests.post(gemini_api_url, json=data, headers=headers)
-    if response.status_code == 200:
-        logging.info("Data sent to Gemini API successfully.")
+        # Send the answer directly without displaying the prompt to the user
+        bot.send_message(message.chat.id, presence_info)
+
+        # Continue with any additional processing or handling as needed...
+
+    except Exception as e:
+        # Handle any errors that might occur during image processing
+        bot.send_message(message.chat.id, f"Error processing the image: {str(e)}")
+
+    finally:
+        # Remove the loading message
+        bot.delete_message(message.chat.id, loading_message.message_id)
+
+# Function to check the presence of specific elements in the image description
+def check_presence(description):
+    # Replace this with your logic based on the image description
+    # For example, you can use keywords in the description to determine presence
+    if "dust" in description.lower():
+        return "The photo contains dust."
+    elif "snow" in description.lower():
+        return "The photo contains snow."
+    elif "damage" in description.lower():
+        return "The photo contains damage."
+    elif "burning" in description.lower():
+        return "The photo contains burning."
     else:
-        logging.error("Error sending data to Gemini API.")
+        return "No specific elements detected in the photo."
 
-if __name__ == "__main__":
-    main()
+# Start polling
+bot.polling()
