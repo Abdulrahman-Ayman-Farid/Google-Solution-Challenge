@@ -66,8 +66,8 @@ def handle_image_message(message):
             # Send the answer directly without displaying the prompt to the user
             bot.send_message(message.chat.id, alert_message)
 
-            # Notify another user with the sender's name in the message & you can test this feature by putting your Telegram Chat ID 
-            another_user_chat_id = '1415370035' 
+            # Notify another user(Admin user as a simulation of the alert system) with the sender's Photo and the alert on it in the message & you can test this feature by putting your Telegram Chat ID 
+            another_user_chat_id = '1415370035' # That is the chat ID of the Admin user getting also an alert as a simulation of the Alert system
             bot.send_message(another_user_chat_id, f"Alert: {sender_name} detected an issue in their photo.")
 
             # Send the photo to the user with the provided chat ID
