@@ -16,7 +16,7 @@ def check_presence(description):
     elif "snow" in description.lower():
         return "Alert: The photo contains snow."
     elif "damage" in description.lower() or "crack" in description.lower() or "broken" in description.lower():
-        return "Alert: The photo contains damage or potential issues."
+        return "Alert: The photo contains physical damage or potential issues."
     elif "burning" in description.lower() or "fire" in description.lower():
         return "Alert: The photo contains burning or fire."
     elif "shadow" in description.lower():
