@@ -38,7 +38,7 @@ def check_presence(description):
     elif "electrical damage" in description.lower() or "short circuit" in description.lower():
         return "Alert: The photo shows signs of electrical damage on solar cells."
     else:
-        return "The Panel Is Working Properly."
+        return "The Panel is Working Properly."
 
 # Example usage
 @bot.message_handler(content_types=['photo'])
