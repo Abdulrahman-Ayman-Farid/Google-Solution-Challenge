@@ -33,7 +33,7 @@ This project aims to detect defects in solar cell images using AI. The defect de
 4. **Run the script:**
 
 
-5. **Send a Solar Panel photo to the bot without writing any text or prompt and it shall tell you whether the solar panel is healthy or not:** 
+5. **Send a Solar Panel photo to the bot without writing any text or prompt and it shall tell you whether the solar panel is working properly or it contains a defect:** 
     
 
 6. **Note: Our Bot doesn't support text messeages because it doesn't help in our Goal.** 
