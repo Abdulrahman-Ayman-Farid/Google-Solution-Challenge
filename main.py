@@ -36,7 +36,6 @@ def check_presence(description):
         return "Alert: The photo contains bird droppings on solar cells."
     elif "electrical damage" in description.lower() or "short circuit" in description.lower():
         return "Alert: The photo shows signs of electrical damage on solar cells."
-    # Add more checks as needed for various issues
     else:
         return "No specific elements detected in the photo."
 
@@ -67,14 +66,14 @@ def handle_image_message(message):
             bot.send_message(message.chat.id, alert_message)
 
             # Notify another user with the sender's name in the message
-            another_user_chat_id = '1415370035'
+            # Note: that the following Chat ID is my Chat ID in telegram and you can also use yours by obtaining it from here https://t.me/RawDataBot
+            another_user_chat_id = '1415370035' 
             bot.send_message(another_user_chat_id, f"Alert: {sender_name} detected an issue in their photo.")
 
             # Send the photo to the user with the provided chat ID
             bot.send_photo(another_user_chat_id, img)
 
-        # Continue with any additional processing or handling as needed...
-
+        
     except Exception as e:
         # Handle any errors that might occur during image processing
         bot.send_message(message.chat.id, f"Error processing the image: {str(e)}")
