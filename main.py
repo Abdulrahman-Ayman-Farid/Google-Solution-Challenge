@@ -1,3 +1,4 @@
+#importing the libraries
 from telebot import TeleBot
 import google.generativeai as genai
 import PIL.Image
