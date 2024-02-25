@@ -66,7 +66,6 @@ def handle_image_message(message):
             bot.send_message(message.chat.id, alert_message)
 
             # Notify another user with the sender's name in the message
-            # Note: that the following Chat ID is my Chat ID in telegram and you can also use yours by obtaining it from here https://t.me/RawDataBot
             another_user_chat_id = '1415370035' 
             bot.send_message(another_user_chat_id, f"Alert: {sender_name} detected an issue in their photo.")
 
