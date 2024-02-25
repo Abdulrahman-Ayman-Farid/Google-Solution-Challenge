@@ -5,12 +5,13 @@ This project aims to detect defects in solar cell images using AI. The defect de
 ## Prerequisites
 
 - Python 3.9
+- Installing the dependencies(Libraries) mentioned below.
 
 ## Telegram Bot Integration
 
-- This project includes a Telegram bot for image analysis and defect detection.
-- The Code Include the `API Token` for our bot in the telegram app
-- It Includes Our `API Key` for the Gemini pro vision
+- This project includes a Telegram bot for testing our prototype.
+- The Code Include the `API Token` for our bot in the telegram app.
+- It Includes Our `API Key` for the Gemini pro vision.
 
 ## How to Run and Use
 
@@ -26,11 +27,14 @@ This project aims to detect defects in solar cell images using AI. The defect de
     pip3 install Pillow
     ```
 
-3. **Search for the Telegram Bot:**
-    - Search in the telegram app by the name : SOLSCAN.xbot
-    - Or just open the link "https://t.me/SOLSCAN_xbot"
+3. **Run the script:**
+   - Run the script by installing the dependencies and running the main.py file
 
-4. **Run the script:**
+
+4. **Search for the Telegram Bot:**
+    - After running the script,Search in the telegram app by the name : SOLSCAN.xbot
+    - Or just open the link "https://t.me/SOLSCAN_xbot"
+    
 
 
 5. **Send a Solar Panel photo to the bot without writing any text or prompt and it shall tell you whether the solar panel is working properly or it contains a defect:** 
@@ -38,10 +42,10 @@ This project aims to detect defects in solar cell images using AI. The defect de
 
 ## Alert System
 
-- The script sends alerts to a specified Telegram user when defects are detected in an image.
-- Configure the recipient's chat ID in the `another_user_chat_id` variable in the `main.py` script.
+- The script sends alerts upon finding a deffect to the user trying it with the specific type of defect detected in the image entered.
+- Also we simulated the idea of alert system by adding a feature in our script that enables us to choose a user to be admin(by putting his chat id) This user also will get the image entered by the other user trying the prototype and also will recieve the alert upon this photo. You can try this feature by entering a different telegram chat id(not the same chat ID trying the prototype) in the script by Configuring the recipient's chat ID in the `another_user_chat_id` variable in the `main.py` script.
 
 ## Notes
-- Our Bot doesn't support text messages 
-- Only send the desired Photo without Entering any Prompt
-- You must run the python script while trying the bot as the bot is programmed with this script
+- Our Bot doesn't support text messages as inputting images only and getting the output ready makes the bot smarter.
+- Only send the desired Photo without Entering any Prompt.
+- You must run the python script while trying the bot as the bot is programmed with this script.
