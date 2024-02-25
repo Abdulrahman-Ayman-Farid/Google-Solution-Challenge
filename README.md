@@ -42,5 +42,6 @@ This project aims to detect defects in solar cell images using AI. The defect de
 - Configure the recipient's chat ID in the `another_user_chat_id` variable in the `main.py` script.
 
 ## Notes
--
--You must run the python script while trying the bot as the bot is programmed with this script
+- Our Bot doesn't support text messages 
+- Only send the desired Photo without Entering any Prompt
+- You must run the python script while trying the bot as the bot is programmed with this script
