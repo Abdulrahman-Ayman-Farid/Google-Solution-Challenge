@@ -9,8 +9,8 @@ This project aims to detect defects in solar cell images using AI. The defect de
 ## Telegram Bot Integration
 
 - This project includes a Telegram bot for image analysis and defect detection.
-- You can configure the Telegram bot by obtaining an API key from the BotFather on Telegram.
-- Update the Telegram bot API key in the `TeleBot` instantiation in the `main.py` script.
+- The Code Include the `API Token` for our bot in the telegram app
+- It Includes Our `API Key` for the Gemini pro vision
 
 ## How to Run and Use
 
@@ -19,7 +19,7 @@ This project aims to detect defects in solar cell images using AI. The defect de
     git clone https://github.com/Abdulrahman-Ayman-Farid/SolScan.git
     ```
 
-2. **Install dependencies (if any):**
+2. **Install dependencies:**
     ```bash
     pip3 install telebot
     pip3 install -q -U google-generativeai
@@ -28,13 +28,15 @@ This project aims to detect defects in solar cell images using AI. The defect de
 
 3. **Search for the Telegram Bot:**
     - Search in the telegram app by the name : SOLSCAN.xbot
-    - Or just open that link "https://t.me/SOLSCAN_xbot"
+    - Or just open the link "https://t.me/SOLSCAN_xbot"
 
 4. **Run the script:**
 
 
-5. Send a Solar Panel photo and it will tell you whether the solar panel is healthy or not 
+5. **Send a Solar Panel photo to the bot without writing any text or prompt and it shall tell you whether the solar panel is healthy or not:** 
     
+
+6. **Note: Our Bot doesn't support text messeages because it doesn't help in our Goal.** 
 
 ## Alert System
 
