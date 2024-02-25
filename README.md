@@ -36,9 +36,11 @@ This project aims to detect defects in solar cell images using AI. The defect de
 5. **Send a Solar Panel photo to the bot without writing any text or prompt and it shall tell you whether the solar panel is working properly or it contains a defect:** 
     
 
-6. **Note: Our Bot doesn't support text messeages because it doesn't help in our Goal.** 
-
 ## Alert System
 
 - The script sends alerts to a specified Telegram user when defects are detected in an image.
 - Configure the recipient's chat ID in the `another_user_chat_id` variable in the `main.py` script.
+
+## Notes
+-
+-You must run the python script while trying the bot as the bot is programmed with this script
