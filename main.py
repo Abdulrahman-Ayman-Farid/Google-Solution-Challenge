@@ -44,7 +44,7 @@ def check_presence(description):
 @bot.message_handler(content_types=['photo'])
 def handle_image_message(message):
     # Send a loading message
-    loading_message = bot.send_message(message.chat.id, "Processing the image, please wait...")
+    loading_message = bot.send_message(message.chat.id, "Processing , please wait...")
 
     try:
         # Get the sender's name
