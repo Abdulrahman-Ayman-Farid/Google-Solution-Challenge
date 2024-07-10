@@ -4,8 +4,8 @@ import google.generativeai as genai
 import PIL.Image
 from io import BytesIO
 # The API'S We Used
-bot = TeleBot("6384034441:AAH9mTBkUTIRdExjeS2dFs3WY4yr5RC7yVo")
-genai.configure(api_key="AIzaSyCsbDluFtfIiCzxnUljPpH4R2Nse5l9c-c")
+bot = TeleBot("Your Telegram API with the tool used in ReadME")
+genai.configure(api_key="put your Gemini API here from Google AI studio")
 model = genai.GenerativeModel('gemini-pro-vision')
 
 def check_presence(description):
