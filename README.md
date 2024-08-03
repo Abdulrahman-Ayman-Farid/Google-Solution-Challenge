@@ -10,6 +10,7 @@ This project aims to detect defects in solar cell images using AI. The defect de
 ## Telegram Bot Integration
 
 - This project includes a Telegram bot for testing our prototype.
+- You'll need your `Telegram API` to insert it in the code
 - The Code Include the `API Token` for our bot in the telegram app.
 - It Includes Our `API Key` for the Gemini pro vision.
 
